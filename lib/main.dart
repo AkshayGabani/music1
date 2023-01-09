@@ -132,7 +132,39 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 List a = [
   {
     'img': 'assets/img/img4.png',
-    'des': '',
+    'name': 'Somnath',
+  },
+  {
+    'img': 'assets/img/img5.png',
+    'name': 'Kutubminar',
+  },
+  {
+    'img': 'assets/img/img6.png',
+    'name': 'Lal Kila',
+  },
+  {
+    'img': 'assets/img/img7.png',
+    'name': 'taj Mahal',
+  },
+  {
+    'img': 'assets/img/img8.png',
+    'name': 'Jamu Kashmir',
+  },
+  {
+    'img': 'assets/img/img9.png',
+    'name': 'WaterFlow',
+  },
+  {
+    'img': 'assets/img/img10.png',
+    'name': 'Sunset',
+  },
+  {
+    'img': 'assets/img/img11.png',
+    'name': 'Waterpark',
+  },
+  {
+    'img': 'assets/img/img13.png',
+    'name': 'Garden',
   }
 ];
 
@@ -142,27 +174,63 @@ class HomePage extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
-            bottom: TabBar(tabs: [
-              Tab(icon: Icon(Icons.photo)),
-              Tab(icon: Icon(Icons.slow_motion_video_sharp)),
-              Tab(icon: Icon(Icons.music_note_sharp)),
-            ]),
-            title: const Text(
-              'akshay',
-              style: TextStyle(fontSize: 30),
-            ),
-            centerTitle: true,
-            elevation: 10),
-        body: TabBarView(
-          children: [
-            Row(
+          appBar: AppBar(
+              bottom: TabBar(tabs: [
+                Tab(icon: Icon(Icons.photo)),
+                Tab(icon: Icon(Icons.slow_motion_video_sharp)),
+                Tab(icon: Icon(Icons.music_note_sharp)),
+              ]),
+              title: const Text(
+                'My App',
+                style: TextStyle(fontSize: 30),
+              ),
+              centerTitle: true,
+              elevation: 10),
+          body: TabBarView(
+            children: [
+              Container(
+                  child: ListView(
+                children: [
+                  StaggeredGrid.count(
+                    crossAxisCount: 2,
+                    children: [
+                      ...a
+                          .map(
+                            (e) => Column(
+                              children: [
+                                Container(
+                                  child: Center(child: Image.asset(e['img'])),
+                                  decoration: BoxDecoration(
+                                      border:
+                                          Border.all(style: BorderStyle.solid),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  padding: EdgeInsets.only(
+                                      bottom: 10, right: 10, top: 5, left: 5),
+                                  height: 150,
+                                ),
+                                Text(
+                                  e['name'],
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                          )
+                          .toList()
+                    ],
+                  )
+                ],
+              )),
+              Container(
 
-              children: [Container(color: Colors.cyan,)],
-            )
-          ],
-        ),
-      ),
+              ),
+              Container(
+                color: Colors.brown,
+              ),
+            ],
+          )),
     );
   }
 }
